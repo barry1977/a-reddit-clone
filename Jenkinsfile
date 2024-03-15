@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh "sudo npm install"
+                sh "sudo -S npm install"
             }
         }
         stage('TRIVY FS SCAN') {
