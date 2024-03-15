@@ -12,6 +12,7 @@ pipeline {
         DOCKER_PASS = 'docker-hub'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+	NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
     stages {
         stage('clean workspace') {
@@ -41,7 +42,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh "sudo -S npm install"
+                sh "npm install"
             }
         }
         stage('TRIVY FS SCAN') {
