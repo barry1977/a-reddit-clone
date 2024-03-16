@@ -45,6 +45,11 @@ pipeline {
                 sh "npm install"
             }
         }
+	stage('TRIVY FS SCAN') {
+            steps {
+                sh "trivy fs . > trivyfs.txt"
+             }
+         }
 
 	stage("Build & Push Docker Image") {
              steps {
